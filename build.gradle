@@ -1,4 +1,5 @@
 buildscript {
+    ext.kotlin_version = '2.1.0'
     repositories {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
@@ -6,6 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -13,9 +15,11 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+    id 'org.jetbrains.kotlin.jvm' version '1.8.22'
 }
 
 apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'kotlin'
 
 group = mod_group_id
 version = mod_version
@@ -139,6 +143,9 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+
+    maven { url "https://cursemaven.com" }
+    mavenCentral()
 }
 
 dependencies {
@@ -164,7 +171,12 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+    // Random bound at runtime dependencies that are mixed in to VH
+    runtimeOnly fg.deobf("curse.maven:spark-361579:4505375")
+    runtimeOnly fg.deobf("curse.maven:kotlin-for-forge-351264:4513187")
+
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
 }
 
@@ -185,7 +197,8 @@ tasks.named('processResources', ProcessResources).configure {
 
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
         expand replaceProperties + [project: project]
-    }}
+    }
+}
 
 // Example for how to get properties into the manifest for reading at runtime.
 tasks.named('jar', Jar).configure {
@@ -207,4 +220,8 @@ tasks.named('jar', Jar).configure {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+kotlin {
+    jvmToolchain(17)
 }
