@@ -19,9 +19,11 @@ object SymbolRegistry {
         ArraySymbol.setRegistryName("blockscript", "blockscript_array")
         CharacterSymbol.setRegistryName("blockscript", "blockscript_character")
         DefineSymbol.setRegistryName("blockscript", "blockscript_define")
+        AssignSymbol.setRegistryName("blockscript", "blockscript_assign")
         blockRegistryEvent.registry.register(ArraySymbol)
         blockRegistryEvent.registry.register(CharacterSymbol)
         blockRegistryEvent.registry.register(DefineSymbol)
+        blockRegistryEvent.registry.register(AssignSymbol)
     }
 
     @SubscribeEvent
@@ -30,8 +32,10 @@ object SymbolRegistry {
         ArraySymbol.ITEM.setRegistryName("blockscript", "blockscript_array")
         CharacterSymbol.ITEM.setRegistryName("blockscript", "blockscript_character")
         DefineSymbol.ITEM.setRegistryName("blockscript", "blockscript_define")
+        AssignSymbol.ITEM.setRegistryName("blockscript", "blockscript_assign")
         blockRegistryEvent.registry.register(ArraySymbol.ITEM)
         blockRegistryEvent.registry.register(CharacterSymbol.ITEM)
         blockRegistryEvent.registry.register(DefineSymbol.ITEM)
+        blockRegistryEvent.registry.register(AssignSymbol.ITEM)
     }
 }
