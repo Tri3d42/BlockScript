@@ -1,3 +1,5 @@
 {
-  "block.blockscript.blockscript_array": "BlockScript Array"
+  "block.blockscript.blockscript_array": "BlockScript Array",
+  "block.blockscript.blockscript_character": "BlockScript Character",
+  "block.blockscript.blockscript_define": "BlockScript Define"
 }

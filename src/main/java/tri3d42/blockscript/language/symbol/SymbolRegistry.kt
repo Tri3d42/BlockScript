@@ -18,8 +18,10 @@ object SymbolRegistry {
     fun onBlocksRegistry(blockRegistryEvent: RegistryEvent.Register<Block?>) {
         ArraySymbol.setRegistryName("blockscript", "blockscript_array")
         CharacterSymbol.setRegistryName("blockscript", "blockscript_character")
+        DefineSymbol.setRegistryName("blockscript", "blockscript_define")
         blockRegistryEvent.registry.register(ArraySymbol)
         blockRegistryEvent.registry.register(CharacterSymbol)
+        blockRegistryEvent.registry.register(DefineSymbol)
     }
 
     @SubscribeEvent
@@ -27,7 +29,9 @@ object SymbolRegistry {
     fun onBlockItemsRegistry(blockRegistryEvent: RegistryEvent.Register<Item?>) {
         ArraySymbol.ITEM.setRegistryName("blockscript", "blockscript_array")
         CharacterSymbol.ITEM.setRegistryName("blockscript", "blockscript_character")
+        DefineSymbol.ITEM.setRegistryName("blockscript", "blockscript_define")
         blockRegistryEvent.registry.register(ArraySymbol.ITEM)
         blockRegistryEvent.registry.register(CharacterSymbol.ITEM)
+        blockRegistryEvent.registry.register(DefineSymbol.ITEM)
     }
 }

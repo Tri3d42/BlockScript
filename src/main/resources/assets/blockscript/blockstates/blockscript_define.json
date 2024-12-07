@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model":"blockscript:block/blockscript_define",
+      "y": 180
+    },
+    "facing=south": {
+      "model":"blockscript:block/blockscript_define",
+      "y": 0
+    },
+    "facing=east": {
+      "model":"blockscript:block/blockscript_define",
+      "y": 270
+    },
+    "facing=west": {
+      "model":"blockscript:block/blockscript_define",
+      "y": 90
+    }
+  }
+}
