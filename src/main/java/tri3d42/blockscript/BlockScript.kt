@@ -16,12 +16,16 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
 import org.slf4j.Logger
+import tri3d42.blockscript.language.symbol.SymbolRegistry
 import java.util.stream.Collectors
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("blockscript")
 class BlockScript {
+
     init {
+        MinecraftForge.EVENT_BUS.register(SymbolRegistry)
+
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().modEventBus.addListener { event: FMLCommonSetupEvent ->
             this.setup(
