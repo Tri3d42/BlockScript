@@ -17,13 +17,17 @@ object SymbolRegistry {
     @JvmStatic
     fun onBlocksRegistry(blockRegistryEvent: RegistryEvent.Register<Block?>) {
         ArraySymbol.setRegistryName("blockscript", "blockscript_array")
+        CharacterSymbol.setRegistryName("blockscript", "blockscript_character")
         blockRegistryEvent.registry.register(ArraySymbol)
+        blockRegistryEvent.registry.register(CharacterSymbol)
     }
 
     @SubscribeEvent
     @JvmStatic
     fun onBlockItemsRegistry(blockRegistryEvent: RegistryEvent.Register<Item?>) {
         ArraySymbol.ITEM.setRegistryName("blockscript", "blockscript_array")
+        CharacterSymbol.ITEM.setRegistryName("blockscript", "blockscript_character")
         blockRegistryEvent.registry.register(ArraySymbol.ITEM)
+        blockRegistryEvent.registry.register(CharacterSymbol.ITEM)
     }
 }
